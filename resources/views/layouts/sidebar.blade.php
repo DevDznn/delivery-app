@@ -1,4 +1,3 @@
-<!-- layouts/sidebar.blade.php -->
 <div class="w-64 bg-[#192208] text-gray-100 shadow-md min-h-screen flex flex-col fixed top-0 left-0 z-50">
 
     <!-- Sidebar Header -->
@@ -9,15 +8,16 @@
         </div>
     </div>
 
-
-
     <!-- Navigation -->
     <nav class="mt-4 flex-1">
 
         <!-- Driver Management -->
-        <a href="/drivers" class="sidebar-link flex items-center p-3 text-sm rounded-lg transition-colors duration-200">
+        <a href="/drivers"
+            class="sidebar-link flex items-center p-3 text-sm rounded-lg transition-colors duration-200
+   {{ Request::is('drivers*') ? 'bg-green-500 text-white' : '' }}">
             <i class="fas fa-user w-4 h-4 mr-3"></i> Driver Management
         </a>
+
 
         <!-- Payment Section -->
         <div class="mt-1">
@@ -81,7 +81,6 @@
         }
     }
 
-    // Sidebar hover/focus/click effect using Tailwind classes
     document.querySelectorAll('.sidebar-link, .sidebar-sub-link').forEach(link => {
         link.classList.add('hover:bg-green-500', 'hover:text-white', 'focus:bg-green-500', 'focus:text-white', 'active:bg-green-600', 'active:text-white');
     });
