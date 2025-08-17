@@ -47,9 +47,9 @@
                 <input type="text" name="driver_number" value="{{ old('driver_number', $driver->driver_number) }}" class="w-full border p-2 rounded" required>
             </div>
 
-            <!-- Employment Type -->
+            <!-- SFD Type -->
             <div>
-                <label class="block font-semibold mb-1">Employment Type:</label>
+                <label class="block font-semibold mb-1">SFD:</label>
                 <select name="employment_type" class="w-full border p-2 rounded" required>
                     <option value="Full Time" {{ $driver->employment_type === 'Full Time' ? 'selected' : '' }}>Full Time</option>
                     <option value="Part Time" {{ $driver->employment_type === 'Part Time' ? 'selected' : '' }}>Part Time</option>

@@ -60,15 +60,24 @@
                     <a href="{{ route('drivers.edit', $driver->id) }}" class="p-2 bg-gray-100 rounded hover:bg-blue-100" title="Edit">
                         <i class="fas fa-edit text-blue-600"></i>
                     </a>
-                    <form action="{{ route('drivers.destroy', $driver->id) }}" method="POST" x-data="{ showModal: false, confirmationText: '' }">
+                    <form action="{{ route('drivers.destroy', $driver->id) }}"
+                        method="POST"
+                        x-data="{ showModal: false, confirmationText: '' }"
+                        @submit="showModal = false; confirmationText = ''">
                         @csrf
                         @method('DELETE')
-                        <button type="button" @click="showModal = true" class="p-2 bg-gray-100 rounded hover:bg-red-100" title="Delete">
+
+                        <!-- Delete button -->
+                        <button type="button" @click="showModal = true"
+                            class="p-2 bg-gray-100 rounded hover:bg-red-100"
+                            title="Delete">
                             <i class="fas fa-trash text-red-600"></i>
                         </button>
 
                         <!-- Modal -->
-                        <div x-show="showModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+                        <div x-show="showModal"
+                            class="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+                            x-cloak>
                             <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
                                 <h2 class="text-lg font-semibold text-gray-800">Confirm Deletion</h2>
                                 <p class="mt-2 text-sm text-gray-600">
@@ -77,13 +86,16 @@
                                 </p>
 
                                 <!-- Input -->
-                                <input type="text" x-model="confirmationText"
+                                <input type="text"
+                                    x-model="confirmationText"
                                     placeholder="Type delete to confirm"
                                     class="mt-4 w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-red-300">
 
+                                <!-- Buttons -->
                                 <div class="mt-6 flex justify-end gap-3">
                                     <!-- Cancel -->
-                                    <button type="button" @click="showModal = false; confirmationText = ''"
+                                    <button type="button"
+                                        @click="showModal = false; confirmationText = ''"
                                         class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300">
                                         Cancel
                                     </button>
