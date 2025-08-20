@@ -17,6 +17,8 @@ class Driver extends Model
         'is_suspended',
         'is_ceased',
         'id_iqarna',
+        'iqama_issue',
+        'iqama_duration',
         'id_iqarna_expiry',
         'dob',
         'nationality',
@@ -32,9 +34,15 @@ class Driver extends Model
     {
         return $this->belongsTo(User::class);
     }
-    
+
     protected $casts = [
+        'iqama_issue' => 'date',
         'id_iqarna_expiry' => 'date',
         'dob' => 'date',
     ];
+
+    public function vehicle()
+    {
+        return $this->hasOne(Vehicle::class); 
+    }
 }
