@@ -1,7 +1,6 @@
 import './bootstrap';
+import * as lucide from "lucide";
 
-import lucide from "lucide";
-
-document.addEventListener("DOMContentLoaded", function() {
-    lucide.replace();
+document.addEventListener("DOMContentLoaded", () => {
+    lucide.createIcons();
 });

@@ -70,127 +70,16 @@
         </div>
 
         <!-- Tab Contents -->
-        <div id="driver-info" class="tab-content">
-            <div class="bg-gradient-to-r from-[#F0F8FF] via-white to-green-50 rounded-2xl shadow-md p-6 hover:shadow-lg transition">
-                <h2 class="text-xs font-bold mb-6 text-green-700">Driver Information</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-700 text-xs">
-                    <div>
-                        <p class="text-[11px] font-semibold text-gray-500">ID Resident/Iqama #</p>
-                        <div class="mt-1 p-3 rounded-lg bg-white/90 shadow-sm">{{ $driver->id_iqarna ?? 'N/A' }}</div>
-                    </div>
-                    <div>
-                        <p class="text-[11px] font-semibold text-gray-500">ID Resident/Iqama # Expiry Date</p>
-                        <div class="mt-1 p-3 rounded-lg bg-white/90 shadow-sm">
-                            {{ $driver->id_iqarna_expiry ? \Carbon\Carbon::parse($driver->id_iqarna_expiry)->format('m/d/Y') : 'N/A' }}
-                        </div>
-                    </div>
-                    <div>
-                        <p class="text-[11px] font-semibold text-gray-500">Date of Birth</p>
-                        <div class="mt-1 p-3 rounded-lg bg-white/90 shadow-sm">
-                            {{ $driver->dob ? \Carbon\Carbon::parse($driver->dob)->format('m/d/Y') : 'N/A' }}
-                        </div>
-                    </div>
-                    <div>
-                        <p class="text-[11px] font-semibold text-gray-500">Nationality</p>
-                        <div class="mt-1 p-3 rounded-lg bg-white/90 shadow-sm">{{ $driver->nationality ?? 'N/A' }}</div>
-                    </div>
-                    <div>
-                        <p class="text-[11px] font-semibold text-gray-500">Country</p>
-                        <div class="mt-1 p-3 rounded-lg bg-white/90 shadow-sm">{{ $driver->country ?? 'N/A' }}</div>
-                    </div>
-                    <div>
-                        <p class="text-[11px] font-semibold text-gray-500">City</p>
-                        <div class="mt-1 p-3 rounded-lg bg-white/90 shadow-sm">{{ $driver->city ?? 'N/A' }}</div>
-                    </div>
-                    <div>
-                        <p class="text-[11px] font-semibold text-gray-500">IMEI</p>
-                        <div class="mt-1 p-3 rounded-lg bg-white/90 shadow-sm">{{ $driver->imei ?? 'N/A' }}</div>
-                    </div>
-                    <div>
-                        <p class="text-[11px] font-semibold text-gray-500">Phone Number</p>
-                        <div class="mt-1 p-3 rounded-lg bg-white/90 shadow-sm">{{ $driver->user->phone ?? 'N/A' }}</div>
-                    </div>
-                    <div>
-                        <p class="text-[11px] font-semibold text-gray-500">Gender</p>
-                        <div class="mt-1 p-3 rounded-lg bg-white/90 shadow-sm">{{ $driver->gender ?? 'N/A' }}</div>
-                    </div>
-                    <div class="md:col-span-2">
-                        <p class="text-[11px] font-semibold text-gray-500">Add Note</p>
-                        <div class="mt-1 p-3 rounded-lg bg-white/90 shadow-sm">{{ $driver->note ?? 'N/A' }}</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @include('drivers.components.show.driver-show')
 
-        <div id="vehicle-info" class="tab-content hidden">
-            <div class="bg-gradient-to-r from-[#F0F8FF] via-white to-green-50 rounded-2xl shadow-md p-6 hover:shadow-lg transition">
-                <h2 class="text-xs font-bold mb-6 text-green-700">Vehicle Information</h2>
-                @if($driver->vehicle)
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-700 text-xs">
-                    <div>
-                        <p class="text-[11px] font-semibold text-gray-500">Full Name</p>
-                        <div class="mt-1 p-3 rounded-lg bg-white/90 shadow-sm">{{ $driver->user->name ?? 'N/A' }}</div>
-                    </div>
-                    <div>
-                        <p class="text-[11px] font-semibold text-gray-500">Iqama #</p>
-                        <div class="mt-1 p-3 rounded-lg bg-white/90 shadow-sm">{{ $driver->id_iqarna ?? 'N/A' }}</div>
-                    </div>
-                    <div>
-                        <p class="text-[11px] font-semibold text-gray-500">Car Type</p>
-                        <div class="mt-1 p-3 rounded-lg bg-white/90 shadow-sm">{{ $driver->vehicle->car_type ?? 'N/A' }}</div>
-                    </div>
-                    <div>
-                        <p class="text-[11px] font-semibold text-gray-500">Plate Number</p>
-                        <div class="mt-1 p-3 rounded-lg bg-white/90 shadow-sm">{{ $driver->vehicle->plate_number ?? 'N/A' }}</div>
-                    </div>
-                    <div>
-                        <p class="text-[11px] font-semibold text-gray-500">Year Model</p>
-                        <div class="mt-1 p-3 rounded-lg bg-white/90 shadow-sm">{{ $driver->vehicle->year_model ?? 'N/A' }}</div>
-                    </div>
-                    <div>
-                        <p class="text-[11px] font-semibold text-gray-500">Brand Model</p>
-                        <div class="mt-1 p-3 rounded-lg bg-white/90 shadow-sm">{{ $driver->vehicle->brand_model ?? 'N/A' }}</div>
-                    </div>
-                    <div>
-                        <p class="text-[11px] font-semibold text-gray-500">Unit Service Type</p>
-                        <div class="mt-1 p-3 rounded-lg bg-white/90 shadow-sm">{{ $driver->vehicle->unit_service_type ?? 'N/A' }}</div>
-                    </div>
-                </div>
-                @else
-                <p class="text-gray-700 text-xs">No vehicle assigned.</p>
-                @endif
-            </div>
-        </div>
+        @include('drivers.components.show.vehicle-show')
 
-        <div id="attachments" class="tab-content hidden">
-            <div class="bg-gradient-to-r from-[#F0F8FF] via-white to-green-50 rounded-2xl shadow-md p-6 hover:shadow-lg transition">
-                <h2 class="text-xs font-bold mb-6 text-green-700">Attachments</h2>
-                @if($driver->vehicle && $driver->vehicle->attachments->count())
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-700 text-xs">
-                    @foreach(['resident_permit','driver_license','estermara_registration','passport','other'] as $type)
-                    @php
-                    $attachment = $driver->vehicle->attachments->firstWhere('attachment_type', $type);
-                    @endphp
-                    <div>
-                        <p class="text-[11px] font-semibold text-gray-500">{{ ucwords(str_replace('_',' ',$type)) }}</p>
-                        @if($attachment)
-                        <img src="{{ asset('storage/' . $attachment->file_path) }}" alt="{{ $type }}" class="mt-1 rounded-lg shadow-sm w-full max-h-48 object-cover">
-                        @else
-                        <div class="mt-1 p-3 rounded-lg bg-white/90 shadow-sm text-gray-500">No file uploaded</div>
-                        @endif
-                    </div>
-                    @endforeach
-                </div>
-                @else
-                <p class="text-gray-700 text-xs">No attachments uploaded.</p>
-                @endif
-            </div>
-        </div>
+        @include('drivers.components.show.attachment-show')
 
         <div id="logs" class="tab-content hidden">
             <div class="bg-gradient-to-r from-[#F0F8FF] via-white to-green-50 rounded-2xl shadow-md p-6 hover:shadow-lg transition">
-                <h2 class="text-xs font-bold mb-6 text-green-700">Logs</h2>
-                <p class="text-gray-700 text-xs">Logs content...</p>
+                <h2 class="text-lg font-bold mb-6 text-green-700">Logs</h2>
+                <p class="text-gray-700 text-xs">Logs soon......not yet available</p>
             </div>
         </div>
 
