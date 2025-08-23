@@ -60,7 +60,7 @@ class DriverController extends Controller
             'gender' => ['required', Rule::in(['Male', 'Female', 'Other'])],
             'phone' => 'nullable|string|max:20',
             'note' => 'nullable|string',
-            'photo_path' => 'nullable|image|max:2048',
+            'photo_path' => 'nullable|image|max:10240',
             'password' => 'required|string|confirmed|min:8',
 
             'car_type' => 'required|string',
@@ -69,7 +69,7 @@ class DriverController extends Controller
             'brand_model' => 'required|string',
             'unit_service_type' => 'required|string',
 
-            'attachments.*' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
+            'attachments.*' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:10240',
         ]);
 
         try {
@@ -165,7 +165,7 @@ class DriverController extends Controller
             'gender' => 'nullable|string',
             'phone' => 'nullable|string|max:20',
             'note' => 'nullable|string',
-            'photo_path' => 'nullable|image|max:2048',
+            'photo_path' => 'nullable|image|max:10240',
             // Vehicle
             'car_type' => 'nullable|string|max:255',
             'plate_number' => 'nullable|string|max:255',
@@ -173,7 +173,7 @@ class DriverController extends Controller
             'brand_model' => 'nullable|string|max:255',
             'unit_service_type' => 'nullable|string|max:255',
             // Attachments
-            'attachments.*' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
+            'attachments.*' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:10240',
         ]);
 
         // Update user
