@@ -64,7 +64,6 @@
     <iframe id="modalPdf" src="" class="w-[90%] h-[90%] rounded-lg shadow-lg bg-white"></iframe>
 </div>
 
-<!-- PDF.js CDN -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
 
 <script>
@@ -77,7 +76,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const modalPdf = document.getElementById('modalPdf');
     const closePdfModal = document.getElementById('closePdfModal');
 
-    // Image click → open modal
     document.querySelectorAll('.preview-image').forEach(img => {
         img.addEventListener('click', () => {
             modalImage.src = img.dataset.src;
@@ -98,7 +96,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // PDF click → open modal
     document.querySelectorAll('.pdf-thumbnail').forEach(canvas => {
         canvas.addEventListener('click', () => {
             modalPdf.src = canvas.dataset.src;
@@ -110,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
     closePdfModal.addEventListener('click', () => {
         pdfModal.classList.add('hidden');
         pdfModal.classList.remove('flex');
-        modalPdf.src = ''; // clear PDF to stop loading
+        modalPdf.src = ''; 
     });
 
     pdfModal.addEventListener('click', (e) => {
@@ -134,8 +131,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const viewport = page.getViewport({ scale: 1 });
         const context = canvas.getContext('2d');
 
-        // Adjust thumbnail size to fit like image
-        const scale = 0.3; // Smaller scale for thumbnail
+        const scale = 0.3; 
         const scaledViewport = page.getViewport({ scale: scale });
 
         canvas.width = scaledViewport.width;
