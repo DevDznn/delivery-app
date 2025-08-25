@@ -54,7 +54,7 @@
         </a>
 
         <!-- Tracking Page -->
-        <a href="#tracking" class="sidebar-link flex items-center p-3 mt-1 text-sm rounded-lg transition-colors duration-200">
+        <a href="/tracking" class="sidebar-link flex items-center p-3 mt-1 text-sm rounded-lg transition-colors duration-200">
             <i class="fas fa-map-marker-alt w-4 h-4 mr-3"></i> Tracking Page
         </a>
 

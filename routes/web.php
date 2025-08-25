@@ -12,3 +12,7 @@ Route::get('/', function () {
 
 Route::resource('drivers', DriverController::class);
 
+Route::get('/tracking', function(){
+    return view('tracking-page.tracking-page');
+});
+
